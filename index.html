@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+    <!-- গুগল সাইট ভেরিফিকেশন কোড -->
+    <meta name="google-site-verification" content="9xT0VU-o9quzSSQKCrrO1ua5OCRUFpr_J2cUe22tGzs" />
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ক্যালেন্ডার ২০২৫</title>
+    
+    <!-- সার্চ ইঞ্জিন অপটিমাইজেশন (SEO) -->
+    <title>মাই ক্যালেন্ডার - বাংলা, ইংরেজি ও আরবি ক্যালেন্ডার</title>
+    <meta name="description" content="মাই ক্যালেন্ডার - বাংলা, ইংরেজি ও আরবি তারিখসহ সম্পূর্ণ ক্যালেন্ডার। বাংলাদেশের সকল সরকারি ছুটি ও বিশেষ দিন।">
+    <meta name="keywords" content="মাই ক্যালেন্ডার, ক্যালেন্ডার ২০২৬, বাংলা ক্যালেন্ডার, আরবি ক্যালেন্ডার, বাংলাদেশ ক্যালেন্ডার, ছুটির তালিকা ২০২৬">
+    <meta name="author" content="মাই ক্যালেন্ডার">
+    
+    <!-- ওপেন গ্রাফ (সোশ্যাল মিডিয়া ও গুগলে নাম-ছবি দেখানোর জন্য) -->
+    <meta property="og:title" content="মাই ক্যালেন্ডার">
+    <meta property="og:description" content="বাংলা, ইংরেজি ও আরবি তারিখসহ সম্পূর্ণ ক্যালেন্ডার ও ছুটির তালিকা।">
+    <meta property="og:image" content="https://i.ibb.co/Y4R9sf80/1000103709.jpg">
+    <meta property="og:url" content="https://my-calendar-dun.vercel.app/">
+    <meta property="og:type" content="website">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap');
 
@@ -24,6 +40,11 @@
             padding: 0;
             box-sizing: border-box;
             padding-bottom: 70px; 
+            /* কপিরাইট বন্ধ (টেক্সট সিলেক্ট বন্ধ) */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         .hidden { display: none !important; }
@@ -35,6 +56,24 @@
             text-align: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
+        
+        /* প্রোফাইল পিকচারের জন্য স্টাইল (নাম বাদ দেওয়া হয়েছে) */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 5px;
+            object-fit: cover;
+        }
+
         .app-header h1 { margin: 0; font-size: 2rem; font-weight: 700; }
         
         #live-info-wrapper { margin-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.3); padding-top: 15px; }
@@ -54,44 +93,45 @@
         #calendar-details-view { padding: 15px; }
         #back-to-selector-btn { display: block; width: 100%; font-family: 'Noto Sans Bengali', sans-serif; font-size: 1.1rem; font-weight: 700; padding: 12px; margin-bottom: 20px; cursor: pointer; background-color: var(--primary-green); color: var(--text-light); border: none; border-radius: 8px; }
         
-        .calendar-wrapper{width:100%;border:2px solid var(--border-color);background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.08)}.month-header{text-align:center;padding:5px 0}.month-header #gregorian-month-year{font-size:1.8rem;font-weight:700;color:var(--primary-green)}.month-header .other-month-bar{font-size:1rem;font-weight:500;padding:5px;margin:2px 0;border-top:2px solid var(--border-color);border-bottom:2px solid var(--border-color)}#bengali-month-year{background-color:#ffffcc}#hijri-month-year{background-color:#ccffff}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);border-top:2px solid var(--border-color)}.grid-cell{border-left:2px solid var(--border-color);border-top:2px solid var(--border-color);text-align:center;font-weight:700;padding:5px}.grid-cell:first-child{border-left:none}.weekdays .grid-cell{background-color:var(--primary-green);color:#fff;font-size:1rem;border:none !important;}.weekdays .grid-cell.friday-header{background-color:var(--holiday-red)}.days .grid-cell{min-height:70px;display:flex;flex-direction:column;justify-content:space-between;padding:0}.days .grid-cell.empty{background-color:#f8f8f8}.gregorian-date-num{font-size:1.6rem;padding-top:5px}.other-dates-wrapper{display:flex;font-size:.8rem;border-top:2px solid var(--border-color)}.other-dates-wrapper span{width:50%;padding:3px 0}.bangla-date-num{background-color:#ffffcc;border-right:2px solid var(--border-color)}.hijri-date-num{background-color:#ccffff}
+        .calendar-wrapper{width:100%;border:2px solid var(--border-color);background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.08)}.month-header{text-align:center;padding:5px 0}.month-header #gregorian-month-year{font-size:1.8rem;font-weight:700;color:var(--primary-green)}.month-header .other-month-bar{font-size:1rem;font-weight:500;padding:5px;margin:2px 0;border-top:2px solid var(--border-color);border-bottom:2px solid var(--border-color)}#bengali-month-year{background-color:#ffffcc}#hijri-month-year{background-color:#ccffff}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);border-top:2px solid var(--border-color)}.grid-cell{border-left:2px solid var(--border-color);border-top:2px solid var(--border-color);text-align:center;font-weight:700;padding:5px}.grid-cell:first-child{border-left:none}.weekdays .grid-cell{background-color:var(--primary-green);color:#fff;font-size:1rem;border:none !important;}.weekdays .grid-cell.friday-header{background-color:var(--holiday-red)}.days .grid-cell{min-height:70px;display:flex;flex-direction:column;justify-content:space-between;padding:0}.days .grid-cell.empty{background-color:#f8f8f8}.gregorian-date-num{font-size:1.6rem;padding-top:5px}.other-dates-wrapper{display:flex;font-size:.8rem;border-top:2px solid var(--border-color)}.other-dates-wrapper span{width:50%;padding:3px 0}
+        
+        .bangla-date-num{background-color:#ffffcc;border-right:2px solid var(--border-color); color: #333333; }
+        .hijri-date-num{background-color:#ccffff; color: #333333; }
         
         .days .grid-cell.is-friday, .days .grid-cell.is-holiday { background-color: var(--holiday-red); color: var(--text-light); }
         
         .holiday-footer{margin-top:20px;border-radius:8px;background-color:#333;color:#fff;padding:15px;font-size:0.9rem}.holiday-footer h3{margin:0 0 10px;text-align:center;border-bottom:1px solid #555;padding-bottom:5px;font-size:1rem}.holiday-footer ul{margin:0;padding:0;list-style-type:none}.holiday-footer li{margin-bottom:8px;line-height:1.5}
 
         #fixed-ad-container {
-            position: fixed; bottom: 0; left: 0; width: 100%; height: 60px;
-            background-color: #fff; z-index: 999; display: flex;
-            justify-content: center; align-items: center; border-top: 1px solid #ccc;
-            box-sizing: border-box; overflow: hidden; 
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #fff;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid #ccc;
+            box-sizing: border-box;
+            overflow: hidden; 
         }
-        #fixed-ad-container > div { max-width: 100%; max-height: 100%; }
-        
-        #interstitial-ad-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); z-index: 1001;
-            display: none; justify-content: center; align-items: center;
-        }
-        #interstitial-ad-content { position: relative; background-color: #fff; padding: 20px; border-radius: 5px; max-width: 90%; text-align: center; }
-        #close-ad-btn {
-            position: absolute; top: -10px; right: -10px; width: 30px;
-            height: 30px; background-color: red; color: white; border: none;
-            border-radius: 50%; font-size: 20px; cursor: pointer; line-height: 30px;
+        #fixed-ad-container > div {
+            max-width: 100%;
+            max-height: 100%;
         }
     </style>
-
-    <!-- Ad script 2 & 4 -->
-    <script type='text/javascript' src='//pl27706979.revenuecpmgate.com/56/38/ee/5638ee8d97d8e53d46e490b4fe09c75c.js'></script>
-    <script type='text/javascript' src='//pl27706969.revenuecpmgate.com/2e/46/d7/2e46d77140f9d44ef0c9bbf902071e68.js'></script>
-
 </head>
 <body>
 
     <main id="app-container">
-        <!-- ক্যালেন্ডারের মূল কন্টেন্ট -->
         <div id="month-selector-view">
             <header class="app-header">
+                <!-- শুধু প্রোফাইল পিকচার, নাম বাদ দেওয়া হয়েছে -->
+                <div class="profile-section">
+                    <img src="https://i.ibb.co/Y4R9sf80/1000103709.jpg" alt="মাই ক্যালেন্ডার" class="profile-pic">
+                </div>
                 <h1 id="main-title"></h1>
                 <div id="live-info-wrapper">
                     <div id="live-date"></div>
@@ -115,29 +155,18 @@
         </div>
     </main>
     
-    <!-- নিচে স্থায়ীভাবে থাকার জন্য ব্যানার অ্যাড (Ad script 1) -->
     <div id="fixed-ad-container">
         <script async="async" data-cfasync="false" src="//pl27706963.revenuecpmgate.com/37cdcecad3939f732356db763cd464b7/invoke.js"></script>
         <div id="container-37cdcecad3939f732356db763cd464b7"></div>
     </div>
 
-    <!-- পপ-আপ অ্যাড (Ad Script 5) -->
-    <div id="interstitial-ad-overlay">
-        <div id="interstitial-ad-content">
-            <button id="close-ad-btn">&times;</button>
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '6357be3517bdad46fa06d9e8974a0944', 'format' : 'iframe',
-                    'height' : 300, 'width' : 320, 'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/6357be3517bdad46fa06d9e8974a0944/invoke.js"></script>
-        </div>
-    </div>
-
     <script>
+    // কপিরাইট বন্ধ করার জন্য স্ক্রিপ্ট (রাইট ক্লিক ও কপি বন্ধ)
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('copy', event => event.preventDefault());
+    document.addEventListener('cut', event => event.preventDefault());
+
     document.addEventListener('DOMContentLoaded', function () {
-        // --- আগের সব DOM এলিমেন্ট ভ্যারিয়েবল এখানে থাকবে ---
         const monthSelectorView = document.getElementById('month-selector-view');
         const calendarDetailsView = document.getElementById('calendar-details-view');
         const detailsContentWrapper = document.getElementById('details-content-wrapper');
@@ -150,69 +179,106 @@
         const backToSelectorBtn = document.getElementById('back-to-selector-btn');
         const liveDateEl = document.getElementById('live-date');
         const liveClockEl = document.getElementById('live-clock');
-        const adOverlay = document.getElementById('interstitial-ad-overlay');
-        const closeAdBtn = document.getElementById('close-ad-btn');
 
         let currentYear = new Date().getFullYear();
-        let onAdCloseAction = null; // অ্যাড বন্ধ হওয়ার পর কী কাজ হবে তা এখানে রাখা হবে
 
-        // --- আগের সকল ফাংশন (toBengaliNumerals, translations, etc.) এখানে অপরিবর্তিত থাকবে ---
         const toBengaliNumerals = (numStr) => String(numStr).replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+        
         const translations = {
              months: ["জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"],
              weekdays: ["রবি", "সোম", "মঙ্গল", "বুধ", "বৃহঃ", "শুক্র", "শনি"],
              weekdaysFull: ["রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার"],
         };
+
         const calendarIconSVG = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19,4H18V2H16V4H8V2H6V4H5C3.89,4 3,4.9 3,6V20C3,21.1 3.9,22 5,22H19C20.1,22 21,21.1 21,20V6C21,4.9 20.1,4 19,4M19,20H5V10H19V20M19,8H5V6H19V8M7,12H17V14H7V12M7,16H17V18H7V16Z" /></svg>`;
-        const monthColors = ['#e8f8f5', '#feefc3', '#fdebd0', '#f9e79f', '#d6eaf8', '#eaf2f8', '#e8daef', '#fadbd8', '#d5f5e3', '#fcf3cf', '#ebdef0', '#eaeded'];
-        function getHolidaysForYear(year) { if (year === 2025) { return { '15-2': "শবে বরাত", '21-2': "শহীদ দিবস", '26-3': "স্বাধীনতা দিবস", '28-3': "জুমাতুল বিদা", '31-3': "ঈদুল ফিতর", '14-4': "বাংলা নববর্ষ", '1-5': "মে দিবস", '21-5': "বুদ্ধপূর্ণিমা", '7-6': "ঈদুল আযহা", '6-7': "আশুরা", '16-8': "জন্মাষ্টমী", '5-9': "ঈদে মিলাদুন্নবী", '2-10': "বিজয়া দশমী", '16-12': "বিজয় দিবস", '25-12': "বড়দিন", }; } return { '1-1': "নববর্ষ", '21-2': "শহীদ দিবস", '26-3': "স্বাধীনতা দিবস", '14-4': "পহেলা বৈশাখ", '1-5': "মে দিবস", '16-12': "বিজয় দিবস", '25-12': "বড়দিন" }; }
+        
+        const monthColors = [
+            '#e8f8f5', '#feefc3', '#fdebd0', '#f9e79f', '#d6eaf8', '#eaf2f8', 
+            '#e8daef', '#fadbd8', '#d5f5e3', '#fcf3cf', '#ebdef0', '#eaeded'
+        ];
+        
+        function getHolidaysForYear(year) {
+            if (year === 2025) {
+                return {
+                    '15-2':"শবে বরাত",'21-2':"শহীদ দিবস",'26-3':"স্বাধীনতা দিবস",'28-3':"জুমাতুল বিদা",'31-3':"ঈদুল ফিতর",'14-4':"বাংলা নববর্ষ",'1-5':"মে দিবস",'21-5':"বুদ্ধপূর্ণিমা",'7-6':"ঈদুল আযহা",'6-7':"আশুরা",'16-8':"জন্মাষ্টমী",'5-9':"ঈদে মিলাদুন্নবী",'2-10':"বিজয়া দশমী",'16-12':"বিজয় দিবস",'25-12':"বড়দিন",
+                };
+            }
+            return {'1-1':"নববর্ষ",'21-2':"শহীদ দিবস",'26-3':"স্বাধীনতা দিবস",'14-4':"পহেলা বৈশাখ",'1-5':"মে দিবস",'16-12':"বিজয় দিবস",'25-12':"বড়দিন"}; 
+        }
+
         function convertToBengali(gDate){const t=new Date(593,3,14),e=gDate.getTime()-t.getTime();let a=Math.floor(e/864e5),r=Math.floor(a/365.2425)+1400,n=new Date(gDate.getFullYear(),0,1),o=Math.floor((gDate-n)/864e5)+1;let s,d,i;const l=["বৈশাখ","জ্যৈষ্ঠ","আষাঢ়","শ্রাবণ","ভাদ্র","আশ্বিন","কার্তিক","অগ্রহায়ণ","পৌষ","মাঘ","ফাল্গুন","চৈত্র"];if(o<104){r--;let t=o+78;t>365&&(t-=365);const e=[30,30,30,30,30,31,31,31,31,31,31],a=["পৌষ","মাঘ","ফাল্গুন","চৈত্র",...l.slice(0,8)];d=0;for(;t>e[d];)t-=e[d],d++;s=t,i=a[d]}else{let t=o-103;const e=[31,31,31,31,31,30,30,30,30,30,30,30];d=0;for(;t>e[d];)t-=e[d],d++;s=t,i=l[d]}return{day:s,monthName:i,year:r}}
         function convertToHijri(gDate){try{const t="bn-u-ca-islamic-nu-latn",e={day:"numeric",month:"long",year:"numeric"},a=new Intl.DateTimeFormat(t,e).formatToParts(gDate);let r,n,o;return a.forEach(t=>{"day"===t.type&&(r=t.value),"month"===t.type&&(n=t.value),"year"===t.type&&(o=t.value.split(" ")[0])}),{day:r,monthName:n,year:o}}catch(t){return{day:"?",monthName:"?",year:"?"}}}
-        function updateLiveBanner() { const now = new Date(); const gDay = toBengaliNumerals(now.getDate()), gMonth = translations.months[now.getMonth()], gYear = toBengaliNumerals(now.getFullYear()), weekday = translations.weekdaysFull[now.getDay()]; const bDate = convertToBengali(now), hDate = convertToHijri(now); liveDateEl.innerHTML = `আজ ${weekday} | ইংরেজি ${gDay} ${gMonth}, ${gYear}<br>বাংলা ${toBengaliNumerals(bDate.day)} ${bDate.monthName}, ${toBengaliNumerals(bDate.year)} | আরবি ${toBengaliNumerals(hDate.day)} ${hDate.monthName}, ${toBengaliNumerals(hDate.year)}`; liveClockEl.textContent = now.toLocaleTimeString('bn-BD', { hour: '2-digit', minute:'2-digit', second:'2-digit', hour12: true }); }
-        function createMonthCalendar(year, month) { const holidays = getHolidaysForYear(year); const calendarWrapper = document.createElement('div'); calendarWrapper.className = 'calendar-wrapper'; const firstDayOfMonth = new Date(year, month, 1), lastDayOfMonth = new Date(year, month + 1, 0); const bengaliStart = convertToBengali(firstDayOfMonth), bengaliEnd = convertToBengali(lastDayOfMonth); const hijriStart = convertToHijri(firstDayOfMonth), hijriEnd = convertToHijri(lastDayOfMonth); let headerHTML = `<div class="month-header"><div id="gregorian-month-year">${translations.months[month]} ${toBengaliNumerals(year)}</div><div class="other-month-bar" id="bengali-month-year">${bengaliStart.monthName} ${toBengaliNumerals(bengaliStart.year)} — ${bengaliEnd.monthName} ${toBengaliNumerals(bengaliEnd.year)} বাংলা</div><div class="other-month-bar" id="hijri-month-year">${hijriStart.monthName} — ${hijriEnd.monthName} ${toBengaliNumerals(hijriStart.year)} হিজরি</div></div>`; let weekdaysHTML = '<div class="weekdays calendar-grid">'; translations.weekdays.forEach((day, index) => { weekdaysHTML += `<div class="grid-cell ${index === 5 ? 'friday-header' : ''}">${day}</div>`; }); weekdaysHTML += '</div>'; let daysHTML = '<div class="days calendar-grid">'; for (let i = 0; i < firstDayOfMonth.getDay(); i++) { daysHTML += `<div class="grid-cell empty"></div>`; } const monthHolidays = []; for (let i = 1; i <= lastDayOfMonth.getDate(); i++) { const dayDate = new Date(year, month, i); let cellClass = 'grid-cell'; if (dayDate.getDay() === 5) cellClass += ' is-friday'; const holidayKey = `${i}-${month + 1}`; if (holidays[holidayKey]) { cellClass += ' is-holiday'; monthHolidays.push({ date: i, day: translations.weekdaysFull[dayDate.getDay()], reason: holidays[holidayKey] }); } const bengaliDate = convertToBengali(dayDate), hijriDate = convertToHijri(dayDate); daysHTML += `<div class="${cellClass}"><div class="gregorian-date-num">${toBengaliNumerals(i)}</div><div class="other-dates-wrapper"><span class="bangla-date-num">${toBengaliNumerals(bengaliDate.day)}</span><span class="hijri-date-num">${toBengaliNumerals(hijriDate.day)}</span></div></div>`; } daysHTML += '</div>'; let footerHTML = '<div class="holiday-footer"><h3>এই মাসের বিশেষ দিন ও ছুটি</h3><ul>'; if (monthHolidays.length > 0) { monthHolidays.sort((a,b) => a.date - b.date).forEach(h => { footerHTML += `<li>⦿ ${toBengaliNumerals(h.date)} ${translations.months[month]} - ${h.day}: ${h.reason}</li>`; }); } else { footerHTML += '<li>এই মাসে কোনো তালিকাভুক্ত ছুটি নেই।</li>'; } footerHTML += '</ul></div>'; const finalWrapper = document.createElement('div'); finalWrapper.innerHTML = `<div class="calendar-wrapper">${headerHTML + weekdaysHTML + daysHTML}</div>${footerHTML}`; return finalWrapper; }
-        function showMonthSelector() { calendarDetailsView.classList.add('hidden'); monthSelectorView.classList.remove('hidden'); }
-        function showCalendarDetails(year, month) { const yearText = `ক্যালেন্ডার ${toBengaliNumerals(year)}`; mainTitle.textContent = yearText; detailsMainTitle.textContent = yearText; detailsContentWrapper.innerHTML = ''; detailsContentWrapper.appendChild(createMonthCalendar(year, month)); monthSelectorView.classList.add('hidden'); calendarDetailsView.classList.remove('hidden'); window.scrollTo(0, 0); }
+
+        function updateLiveBanner() {
+            const now = new Date();
+            const gDay = toBengaliNumerals(now.getDate()), gMonth = translations.months[now.getMonth()], gYear = toBengaliNumerals(now.getFullYear()), weekday = translations.weekdaysFull[now.getDay()];
+            const bDate = convertToBengali(now), hDate = convertToHijri(now);
+            liveDateEl.innerHTML = `আজ ${weekday} | ইংরেজি ${gDay} ${gMonth}, ${gYear}<br>বাংলা ${toBengaliNumerals(bDate.day)} ${bDate.monthName}, ${toBengaliNumerals(bDate.year)} | আরবি ${toBengaliNumerals(hDate.day)} ${hDate.monthName}, ${toBengaliNumerals(hDate.year)}`;
+            liveClockEl.textContent = now.toLocaleTimeString('bn-BD', { hour: '2-digit', minute:'2-digit', second:'2-digit', hour12: true });
+        }
+
+        function createMonthCalendar(year, month) {
+            const holidays = getHolidaysForYear(year);
+            const calendarWrapper = document.createElement('div');
+            calendarWrapper.className = 'calendar-wrapper';
+            const firstDayOfMonth = new Date(year, month, 1), lastDayOfMonth = new Date(year, month + 1, 0);
+            const bengaliStart = convertToBengali(firstDayOfMonth), bengaliEnd = convertToBengali(lastDayOfMonth);
+            const hijriStart = convertToHijri(firstDayOfMonth), hijriEnd = convertToHijri(lastDayOfMonth);
+            let headerHTML = `<div class="month-header"><div id="gregorian-month-year">${translations.months[month]} ${toBengaliNumerals(year)}</div><div class="other-month-bar" id="bengali-month-year">${bengaliStart.monthName} ${toBengaliNumerals(bengaliStart.year)} — ${bengaliEnd.monthName} ${toBengaliNumerals(bengaliEnd.year)} বাংলা</div><div class="other-month-bar" id="hijri-month-year">${hijriStart.monthName} — ${hijriEnd.monthName} ${toBengaliNumerals(hijriStart.year)} হিজরি</div></div>`;
+            let weekdaysHTML = '<div class="weekdays calendar-grid">';
+            translations.weekdays.forEach((day, index) => { weekdaysHTML += `<div class="grid-cell ${index === 5 ? 'friday-header' : ''}">${day}</div>`; });
+            weekdaysHTML += '</div>';
+            let daysHTML = '<div class="days calendar-grid">';
+            for (let i = 0; i < firstDayOfMonth.getDay(); i++) { daysHTML += `<div class="grid-cell empty"></div>`; }
+            const monthHolidays = [];
+            for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
+                const dayDate = new Date(year, month, i); let cellClass = 'grid-cell';
+                if (dayDate.getDay() === 5) cellClass += ' is-friday';
+                const holidayKey = `${i}-${month + 1}`;
+                if (holidays[holidayKey]) { cellClass += ' is-holiday'; monthHolidays.push({ date: i, day: translations.weekdaysFull[dayDate.getDay()], reason: holidays[holidayKey] }); }
+                const bengaliDate = convertToBengali(dayDate), hijriDate = convertToHijri(dayDate);
+                daysHTML += `<div class="${cellClass}"><div class="gregorian-date-num">${toBengaliNumerals(i)}</div><div class="other-dates-wrapper"><span class="bangla-date-num">${toBengaliNumerals(bengaliDate.day)}</span><span class="hijri-date-num">${toBengaliNumerals(hijriDate.day)}</span></div></div>`;
+            }
+            const lastDayIndex = lastDayOfMonth.getDay();
+            if (lastDayIndex < 6) {
+                for (let j = lastDayIndex; j < 6; j++) {
+                    daysHTML += `<div class="grid-cell empty"></div>`;
+                }
+            }
+            daysHTML += '</div>';
+            let footerHTML = '<div class="holiday-footer"><h3>এই মাসের বিশেষ দিন ও ছুটি</h3><ul>';
+            if (monthHolidays.length > 0) {
+                monthHolidays.sort((a,b) => a.date - b.date).forEach(h => { footerHTML += `<li>⦿ ${toBengaliNumerals(h.date)} ${translations.months[month]} - ${h.day}: ${h.reason}</li>`; });
+            } else { footerHTML += '<li>এই মাসে কোনো তালিকাভুক্ত ছুটি নেই।</li>'; }
+            footerHTML += '</ul></div>';
+            const finalWrapper = document.createElement('div');
+            finalWrapper.innerHTML = `<div class="calendar-wrapper">${headerHTML + weekdaysHTML + daysHTML}</div>${footerHTML}`;
+            return finalWrapper;
+        }
         
-        // --- renderMonthSelector ফাংশনে মূল পরিবর্তন আনা হয়েছে ---
+        function showMonthSelector() { calendarDetailsView.classList.add('hidden'); monthSelectorView.classList.remove('hidden'); }
+        function showCalendarDetails(year, month) {
+            const yearText = `মাই ক্যালেন্ডার ${toBengaliNumerals(year)}`;
+            mainTitle.textContent = yearText; detailsMainTitle.textContent = yearText;
+            detailsContentWrapper.innerHTML = '';
+            detailsContentWrapper.appendChild(createMonthCalendar(year, month));
+            monthSelectorView.classList.add('hidden'); calendarDetailsView.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+        
         function renderMonthSelector(year) {
             monthGrid.innerHTML = ''; const yearText = toBengaliNumerals(year);
-            yearDisplay.textContent = yearText; mainTitle.textContent = `ক্যালেন্ডার ${yearText}`;
+            yearDisplay.textContent = yearText; mainTitle.textContent = `মাই ক্যালেন্ডার ${yearText}`;
             translations.months.forEach((monthName, index) => {
                 const monthBox = document.createElement('div');
                 monthBox.className = 'month-box';
                 monthBox.style.backgroundColor = monthColors[index % monthColors.length];
                 monthBox.innerHTML = `${calendarIconSVG}<span class="month-box-name">${monthName}</span>`;
-                
-                // --- এখানে ক্লিক ইভেন্ট পরিবর্তন করা হয়েছে ---
-                monthBox.addEventListener('click', () => {
-                    // ক্লিকের পর যে কাজটি হবে (অর্থাৎ ক্যালেন্ডার দেখানো) তা একটি ফাংশন হিসেবে তৈরি করা হলো
-                    const actionAfterAd = () => showCalendarDetails(year, index);
-                    // বিজ্ঞাপন দেখানোর ফাংশনকে কল করা হলো এবং পরের কাজটি (actionAfterAd) তাকে পাঠিয়ে দেওয়া হলো
-                    showInterstitialAd(actionAfterAd);
-                });
-
+                monthBox.addEventListener('click', () => showCalendarDetails(year, index));
                 monthGrid.appendChild(monthBox);
             });
         }
         
-        // --- অ্যাড দেখানোর নতুন ফাংশন ---
-        function showInterstitialAd(callback) {
-            onAdCloseAction = callback; // অ্যাড বন্ধ হলে কী হবে, তা সেভ করে রাখা হলো
-            adOverlay.style.display = 'flex';
-            setTimeout(hideInterstitialAd, 5000); // ৫ সেকেন্ড পর অটোমেটিক বন্ধ হবে
-        }
-
-        function hideInterstitialAd() {
-            adOverlay.style.display = 'none';
-            // অ্যাড বন্ধ হওয়ার পর যদি কোনো কাজ করার থাকে (যেমন ক্যালেন্ডার দেখানো), তবে সেটা করা হবে
-            if (typeof onAdCloseAction === 'function') {
-                onAdCloseAction();
-                onAdCloseAction = null; // কাজটি একবার করার পর ভ্যারিয়েবলটি খালি করে দেওয়া হলো
-            }
-        }
-
-        closeAdBtn.addEventListener('click', hideInterstitialAd);
-
         prevYearBtn.addEventListener('click', () => { currentYear--; renderMonthSelector(currentYear); });
         nextYearBtn.addEventListener('click', () => { currentYear++; renderMonthSelector(currentYear); });
         backToSelectorBtn.addEventListener('click', showMonthSelector);
@@ -220,12 +286,6 @@
         renderMonthSelector(currentYear);
         updateLiveBanner();
         setInterval(updateLiveBanner, 1000);
-
-        // প্রতি ২ মিনিট পর পর বিজ্ঞাপন দেখানো হবে ( কোনো কাজ ছাড়াই )
-        setInterval(() => {
-            showInterstitialAd(); // এখানে কোনো callback পাঠানো হয়নি, তাই শুধু অ্যাড দেখেই বন্ধ হয়ে যাবে
-        }, 120000); // ১২০০০০ মিলিসেকেন্ড = ২ মিনিট
-        
     });
     </script>
 </body>
