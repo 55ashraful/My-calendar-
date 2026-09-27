@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <!-- গুগল সাইট ভেরিফিকেশন কোড -->
-    <meta name="google-site-verification" content="9xT0VU-o9quzSSQKCrrO1ua5OCRUFpr_J2cUe22tGzs" />
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- সার্চ ইঞ্জিন অপটিমাইজেশন (SEO) -->
-    <title>মাই ক্যালেন্ডার - বাংলা, ইংরেজি ও আরবি ক্যালেন্ডার</title>
-    <meta name="description" content="মাই ক্যালেন্ডার - বাংলা, ইংরেজি ও আরবি তারিখসহ সম্পূর্ণ ক্যালেন্ডার। বাংলাদেশের সকল সরকারি ছুটি ও বিশেষ দিন।">
-    <meta name="keywords" content="মাই ক্যালেন্ডার, ক্যালেন্ডার ২০২৬, বাংলা ক্যালেন্ডার, আরবি ক্যালেন্ডার, বাংলাদেশ ক্যালেন্ডার, ছুটির তালিকা ২০২৬">
-    <meta name="author" content="মাই ক্যালেন্ডার">
-    
-    <!-- ওপেন গ্রাফ (সোশ্যাল মিডিয়া ও গুগলে নাম-ছবি দেখানোর জন্য) -->
-    <meta property="og:title" content="মাই ক্যালেন্ডার">
-    <meta property="og:description" content="বাংলা, ইংরেজি ও আরবি তারিখসহ সম্পূর্ণ ক্যালেন্ডার ও ছুটির তালিকা।">
-    <meta property="og:image" content="https://i.ibb.co/Y4R9sf80/1000103709.jpg">
-    <meta property="og:url" content="https://my-calendar-dun.vercel.app/">
-    <meta property="og:type" content="website">
+    <title>ক্যালেন্ডার ২০২৫</title>
+
+    <!-- ===== PWA সাপোর্টের জন্য নতুন যোগ করা হয়েছে ===== -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1E8449">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="ক্যালেন্ডার">
+    <!-- ==================================================== -->
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap');
@@ -39,12 +35,8 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* স্থায়ী অ্যাডের জন্য নিচে জায়গা তৈরি করা হলো */
             padding-bottom: 70px; 
-            /* কপিরাইট বন্ধ (টেক্সট সিলেক্ট বন্ধ) */
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
 
         .hidden { display: none !important; }
@@ -56,24 +48,6 @@
             text-align: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
-        
-        /* প্রোফাইল পিকচারের জন্য স্টাইল (নাম বাদ দেওয়া হয়েছে) */
-        .profile-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .profile-pic {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            margin-bottom: 5px;
-            object-fit: cover;
-        }
-
         .app-header h1 { margin: 0; font-size: 2rem; font-weight: 700; }
         
         #live-info-wrapper { margin-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.3); padding-top: 15px; }
@@ -93,8 +67,10 @@
         #calendar-details-view { padding: 15px; }
         #back-to-selector-btn { display: block; width: 100%; font-family: 'Noto Sans Bengali', sans-serif; font-size: 1.1rem; font-weight: 700; padding: 12px; margin-bottom: 20px; cursor: pointer; background-color: var(--primary-green); color: var(--text-light); border: none; border-radius: 8px; }
         
+        /* ক্যালেন্ডার গ্রিড স্টাইল */
         .calendar-wrapper{width:100%;border:2px solid var(--border-color);background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.08)}.month-header{text-align:center;padding:5px 0}.month-header #gregorian-month-year{font-size:1.8rem;font-weight:700;color:var(--primary-green)}.month-header .other-month-bar{font-size:1rem;font-weight:500;padding:5px;margin:2px 0;border-top:2px solid var(--border-color);border-bottom:2px solid var(--border-color)}#bengali-month-year{background-color:#ffffcc}#hijri-month-year{background-color:#ccffff}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);border-top:2px solid var(--border-color)}.grid-cell{border-left:2px solid var(--border-color);border-top:2px solid var(--border-color);text-align:center;font-weight:700;padding:5px}.grid-cell:first-child{border-left:none}.weekdays .grid-cell{background-color:var(--primary-green);color:#fff;font-size:1rem;border:none !important;}.weekdays .grid-cell.friday-header{background-color:var(--holiday-red)}.days .grid-cell{min-height:70px;display:flex;flex-direction:column;justify-content:space-between;padding:0}.days .grid-cell.empty{background-color:#f8f8f8}.gregorian-date-num{font-size:1.6rem;padding-top:5px}.other-dates-wrapper{display:flex;font-size:.8rem;border-top:2px solid var(--border-color)}.other-dates-wrapper span{width:50%;padding:3px 0}
         
+        /* এখানে কালার ফিক্স করা হয়েছে যেন লাল ব্যাকগ্রাউন্ডেও লেখা কালো থাকে */
         .bangla-date-num{background-color:#ffffcc;border-right:2px solid var(--border-color); color: #333333; }
         .hijri-date-num{background-color:#ccffff; color: #333333; }
         
@@ -102,6 +78,7 @@
         
         .holiday-footer{margin-top:20px;border-radius:8px;background-color:#333;color:#fff;padding:15px;font-size:0.9rem}.holiday-footer h3{margin:0 0 10px;text-align:center;border-bottom:1px solid #555;padding-bottom:5px;font-size:1rem}.holiday-footer ul{margin:0;padding:0;list-style-type:none}.holiday-footer li{margin-bottom:8px;line-height:1.5}
 
+        /* নিচে স্থায়ী অ্যাডের জন্য স্টাইল */
         #fixed-ad-container {
             position: fixed;
             bottom: 0;
@@ -126,12 +103,9 @@
 <body>
 
     <main id="app-container">
+        <!-- ক্যালেন্ডারের মূল কন্টেন্ট -->
         <div id="month-selector-view">
             <header class="app-header">
-                <!-- শুধু প্রোফাইল পিকচার, নাম বাদ দেওয়া হয়েছে -->
-                <div class="profile-section">
-                    <img src="https://i.ibb.co/Y4R9sf80/1000103709.jpg" alt="মাই ক্যালেন্ডার" class="profile-pic">
-                </div>
                 <h1 id="main-title"></h1>
                 <div id="live-info-wrapper">
                     <div id="live-date"></div>
@@ -155,17 +129,13 @@
         </div>
     </main>
     
+    <!-- নিচে স্থায়ীভাবে থাকার জন্য ব্যানার অ্যাড -->
     <div id="fixed-ad-container">
         <script async="async" data-cfasync="false" src="//pl27706963.revenuecpmgate.com/37cdcecad3939f732356db763cd464b7/invoke.js"></script>
         <div id="container-37cdcecad3939f732356db763cd464b7"></div>
     </div>
 
     <script>
-    // কপিরাইট বন্ধ করার জন্য স্ক্রিপ্ট (রাইট ক্লিক ও কপি বন্ধ)
-    document.addEventListener('contextmenu', event => event.preventDefault());
-    document.addEventListener('copy', event => event.preventDefault());
-    document.addEventListener('cut', event => event.preventDefault());
-
     document.addEventListener('DOMContentLoaded', function () {
         const monthSelectorView = document.getElementById('month-selector-view');
         const calendarDetailsView = document.getElementById('calendar-details-view');
@@ -200,10 +170,10 @@
         function getHolidaysForYear(year) {
             if (year === 2025) {
                 return {
-                    '15-2':"শবে বরাত",'21-2':"শহীদ দিবস",'26-3':"স্বাধীনতা দিবস",'28-3':"জুমাতুল বিদা",'31-3':"ঈদুল ফিতর",'14-4':"বাংলা নববর্ষ",'1-5':"মে দিবস",'21-5':"বুদ্ধপূর্ণিমা",'7-6':"ঈদুল আযহা",'6-7':"আশুরা",'16-8':"জন্মাষ্টমী",'5-9':"ঈদে মিলাদুন্নবী",'2-10':"বিজয়া দশমী",'16-12':"বিজয় দিবস",'25-12':"বড়দিন",
+                    '15-2':"শবে বরাত",'21-2':"শহীদ দিবস",'26-3':"স্বাধীনতা দিবস",'28-3':"জুমাতুল বিদা",'31-3':"ঈদুল ফিতর",'14-4':"বাংলা নববর্ষ",'1-5':"মে দিবস",'21-5':"বুদ্ধপূর্ণিমা",'7-6':"ঈদুল আযহা",'6-7':"আশুরা",'16-8':"জন্মাষ্টমী",'5-9':"ঈদে মিলাদুন্নবী",'2-10':"বিজয়া দশমী",'16-12':"বিজয় দিবস",'25-12':"বড়দিন",
                 };
             }
-            return {'1-1':"নববর্ষ",'21-2':"শহীদ দিবস",'26-3':"স্বাধীনতা দিবস",'14-4':"পহেলা বৈশাখ",'1-5':"মে দিবস",'16-12':"বিজয় দিবস",'25-12':"বড়দিন"}; 
+            return {'1-1':"নববর্ষ",'21-2':"শহীদ দিবস",'26-3':"স্বাধীনতা দিবস",'14-4':"পহেলা বৈশাখ",'1-5':"মে দিবস",'16-12':"বিজয় দিবস",'25-12':"বড়দিন"}; 
         }
 
         function convertToBengali(gDate){const t=new Date(593,3,14),e=gDate.getTime()-t.getTime();let a=Math.floor(e/864e5),r=Math.floor(a/365.2425)+1400,n=new Date(gDate.getFullYear(),0,1),o=Math.floor((gDate-n)/864e5)+1;let s,d,i;const l=["বৈশাখ","জ্যৈষ্ঠ","আষাঢ়","শ্রাবণ","ভাদ্র","আশ্বিন","কার্তিক","অগ্রহায়ণ","পৌষ","মাঘ","ফাল্গুন","চৈত্র"];if(o<104){r--;let t=o+78;t>365&&(t-=365);const e=[30,30,30,30,30,31,31,31,31,31,31],a=["পৌষ","মাঘ","ফাল্গুন","চৈত্র",...l.slice(0,8)];d=0;for(;t>e[d];)t-=e[d],d++;s=t,i=a[d]}else{let t=o-103;const e=[31,31,31,31,31,30,30,30,30,30,30,30];d=0;for(;t>e[d];)t-=e[d],d++;s=t,i=l[d]}return{day:s,monthName:i,year:r}}
@@ -229,8 +199,10 @@
             translations.weekdays.forEach((day, index) => { weekdaysHTML += `<div class="grid-cell ${index === 5 ? 'friday-header' : ''}">${day}</div>`; });
             weekdaysHTML += '</div>';
             let daysHTML = '<div class="days calendar-grid">';
+            // মাসের শুরুর ফাঁকা ঘর
             for (let i = 0; i < firstDayOfMonth.getDay(); i++) { daysHTML += `<div class="grid-cell empty"></div>`; }
             const monthHolidays = [];
+            // মাসের দিনগুলো
             for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
                 const dayDate = new Date(year, month, i); let cellClass = 'grid-cell';
                 if (dayDate.getDay() === 5) cellClass += ' is-friday';
@@ -239,6 +211,7 @@
                 const bengaliDate = convertToBengali(dayDate), hijriDate = convertToHijri(dayDate);
                 daysHTML += `<div class="${cellClass}"><div class="gregorian-date-num">${toBengaliNumerals(i)}</div><div class="other-dates-wrapper"><span class="bangla-date-num">${toBengaliNumerals(bengaliDate.day)}</span><span class="hijri-date-num">${toBengaliNumerals(hijriDate.day)}</span></div></div>`;
             }
+            // মাসের শেষের ফাঁকা ঘর পূরণ করা (বর্ডার ঠিক রাখার জন্য)
             const lastDayIndex = lastDayOfMonth.getDay();
             if (lastDayIndex < 6) {
                 for (let j = lastDayIndex; j < 6; j++) {
@@ -258,7 +231,7 @@
         
         function showMonthSelector() { calendarDetailsView.classList.add('hidden'); monthSelectorView.classList.remove('hidden'); }
         function showCalendarDetails(year, month) {
-            const yearText = `মাই ক্যালেন্ডার ${toBengaliNumerals(year)}`;
+            const yearText = `ক্যালেন্ডার ${toBengaliNumerals(year)}`;
             mainTitle.textContent = yearText; detailsMainTitle.textContent = yearText;
             detailsContentWrapper.innerHTML = '';
             detailsContentWrapper.appendChild(createMonthCalendar(year, month));
@@ -268,7 +241,7 @@
         
         function renderMonthSelector(year) {
             monthGrid.innerHTML = ''; const yearText = toBengaliNumerals(year);
-            yearDisplay.textContent = yearText; mainTitle.textContent = `মাই ক্যালেন্ডার ${yearText}`;
+            yearDisplay.textContent = yearText; mainTitle.textContent = `ক্যালেন্ডার ${yearText}`;
             translations.months.forEach((monthName, index) => {
                 const monthBox = document.createElement('div');
                 monthBox.className = 'month-box';
@@ -287,6 +260,15 @@
         updateLiveBanner();
         setInterval(updateLiveBanner, 1000);
     });
+
+    // ===== Service Worker রেজিস্ট্রেশন (অফলাইনে চালানোর জন্য) =====
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(() => console.log('✅ Service Worker রেজিস্টার হয়েছে! এখন অফলাইনেও চলবে।'))
+                .catch((error) => console.log('❌ Service Worker রেজিস্ট্রেশন ব্যর্থ:', error));
+        });
+    }
     </script>
 </body>
 </html>
